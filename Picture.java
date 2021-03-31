@@ -367,8 +367,33 @@ public class Picture
   }
 
    ////////////////////// methods ///////////////////////////////////////
+   //written by: Rachel Lee
+   public void mirrorTopToBottom()
+   {
+     //Create a 2D array of Pixels
+     Pixel[][] pixels = this.getPixels2D();
+     //create top pixel variable
+     Pixel topPixel = null;
+     //create bottom pixel variable
+     Pixel bottomPixel = null;
+     //Create integer variable mirrorPoint and set equal to the length of array divided by 2 (basically number of rows divided by 2)
+     int mirrorPoint = pixels.length/2;
+     //For loop through half of the rows: set loop control variable integer r equal to 0, condition - r is less than mirrorPoint, r increments by 1
+     for(int r = 0; r < mirrorPoint; r++)
+     {
+       //For loop through columns: set loop control variable integer c equal to 0, condition - c is less than number of columns, c increments by 1
+       for(int c = 0; c < pixels[0].length; c++)
+       {
+         //Set top pixel (row: r, column: c) equal to bottom pixel (row: length of array - 1 - r, column: c)
+         topPixel = pixels[r][c];
+         bottomPixel = pixels[pixels.length - 1 - r][c];
+         //copy top pixel's color to the bottom pixel
+         bottomPixel.setColor(topPixel.getColor());
+       }
+     }
+   }
 
-   
+ 
 
 
 } // this } is the end of class Picture, put all new methods before this
